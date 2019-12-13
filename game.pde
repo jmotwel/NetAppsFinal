@@ -472,9 +472,6 @@ void drawFireWorks(){
 
 // gameState = 3;
 void draw(){
-    if (keys[32]){ // Space
-            gameState = 1;
-    }
     switch(gameState){
     case 0: // Gameboy zoom and fade
         if (keys[32]){ // Space
