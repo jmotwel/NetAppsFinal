@@ -1,20 +1,13 @@
 import pika
-import socket
-import sys
-
-
-def callback(ch, method, properties, body):
-    print("%r:%r" % (method.routing_key, body.decode("utf-8")))
-    
 
 # Rabbitmq setup
-credentials = pika.PlainCredentials('final-pi','netapps')
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'));
-channel = connection.channel()
+credentials = pika.PlainCredentials('repo-pi','netapps')
+connection = pika.BlockingConnection(pika.ConnectionParameters('pumpkin-pi',
+                                                               5672,
+                                                               '/',
+                                                               credentials));
 
-#channel.exchange_declare(exchange='Pokemon',
-#                         exchange_type='direct',
-#                         durable=True)
+channel = connection.channel()
 
 # Put these into if statements
 # will send a message to the relevant queue (ID for pics, Score for high scores)
