@@ -1,12 +1,17 @@
-import SimpleHTTPServer
-import SocketServer
+from flask import Flask, jsonify
+from flask import request, render_template
+from flask import make_response
 
-PORT = 8000
 
-Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 
-httpd = SocketServer.TCPServer(("",PORT),Handler)
+app = Flask(__name__)
 
-print "Serving at port",PORT
+@app.route('/')
+def index():
+	return render_template('index.html')
 
-httpd.serve_forever()
+
+
+if __name__=='__main__':
+
+    app.run(debug=True, port=8000, host='0.0.0.0')

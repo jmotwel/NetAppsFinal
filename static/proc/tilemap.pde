@@ -7,7 +7,7 @@ class tilemap{
     var rows=651;
     var numTiles=8*651;
     tilemap(){
-        mapset=loadImage("tileset.png");
+        mapset=loadImage("./static/img/tileset.png");
 
     }
 

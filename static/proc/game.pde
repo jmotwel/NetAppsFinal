@@ -1,4 +1,4 @@
-/* @pjs preload="tileset.png, character.png, character2.png, gameboy.png"; */
+/* @pjs preload="./static/img/tileset.png, ./static/img/character.png, ./static/img/character2.png, ./static/img/gameboy.png"; */
 PImage[] fragment;
 var gameState = 0;
 var menuState = 0;
@@ -26,11 +26,11 @@ var scoreText = 0;
 var highScore = 0;
 
 // Start animation variables
-var gb = loadImage("gameboy.png");
+var gb = loadImage("./static/img/gameboy.png");
 var gb_x = 185;
 var gbWidth = 30;
 var boost = 1;
-//var p2 = loadImage("character2.png").get(400-32,234-64,32,64);
+//var p2 = loadImage("./static/img/character2.png").get(400-32,234-64,32,64);
 
 var barMap=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1],
             [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -329,14 +329,14 @@ void setup(){
     m.initMap(pg,tMap,ground,ground2,ground3,mapWidth,mapHeight);
     p=new player(3*tileSize,3*tileSize);
     for( var i = 1; i<=31; i++){
-        pokeArr.push(loadImage("./pokemon/"+i+".png"))
+        pokeArr.push(loadImage("./static/img/pokemon/"+i+".png"))
     }
     pokedex = (function() {
         var json = null;
         $.ajax({
             'async': false,
             'global': false,
-            'url': "/pokedex_trim.json",
+            'url': "./static/json/pokedex_trim.json",
             'dataType': "json",
             'success': function(data){
                 json = data;
@@ -356,13 +356,13 @@ var scrollx,scrolly=0;
 var buttons = [new buttonObj(20,100,360,50,"Start Game"),new buttonObj(20,170,360,50,"Instructions"),new buttonObj(250,320,120,50,"Go Back")];
 buttons[0].selected=1;
 var counter = 0;
-var logo = loadImage("pokemon_logo.png");
-var throw1 = loadImage("throwing1.png");
-var throw2 = loadImage("throwing2.png");
-var throw3 = loadImage("throwing3.png");
-var throw4 = loadImage("throwing4.png");
-var throw5 = loadImage("throwing5.png");
-var ball = loadImage("pokeball.png");
+var logo = loadImage("./static/img/pokemon_logo.png");
+var throw1 = loadImage("./static/img/throwing1.png");
+var throw2 = loadImage("./static/img/throwing2.png");
+var throw3 = loadImage("./static/img/throwing3.png");
+var throw4 = loadImage("./static/img/throwing4.png");
+var throw5 = loadImage("./static/img/throwing5.png");
+var ball = loadImage("./static/img/pokeball.png");
 
 var explosionObj = function(a) {
     this.position = new PVector(0, 0);

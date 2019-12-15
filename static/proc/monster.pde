@@ -11,7 +11,7 @@ class monster{
     var isShiny;
     var myBoost;
     monster(id, xpos, ypos, boost,width,height){
-        cset=loadImage("character.png");
+        cset=loadImage("./static/img/character.png");
         m_xpos = xpos;
         m_ypos = ypos;
         myId = id;
@@ -43,10 +43,10 @@ class monster{
     PImage getPokeImage(id){
         if(id>0 && id<=151){
             if(isShiny){
-                return loadImage("./pokemon/shiny/"+id+".png");
+                return loadImage("./static/img/pokemon/shiny/"+id+".png");
             }
             else
-                return loadImage("./pokemon/"+id+".png");
+                return loadImage("./static/img/pokemon/"+id+".png");
         }
         else{
             return null;

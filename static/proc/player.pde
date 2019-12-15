@@ -11,7 +11,7 @@ class player{
     var notMoving;
     var frow,fcol;
     player(xpos,ypos){
-        cset=loadImage("character.png");
+        cset=loadImage("./static/img/character.png");
         m_xpos = xpos;
         m_ypos = ypos;
         m_dir=0;
