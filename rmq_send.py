@@ -12,9 +12,9 @@ credentials = pika.PlainCredentials('final-pi','netapps')
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'));
 channel = connection.channel()
 
-channel.exchange_declare(exchange='Pokemon',
-                         exchange_type='direct',
-                         durable=True)
+#channel.exchange_declare(exchange='Pokemon',
+#                         exchange_type='direct',
+#                         durable=True)
 
 # Put these into if statements
 # will send a message to the relevant queue (ID for pics, Score for high scores)

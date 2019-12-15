@@ -4,6 +4,7 @@ import pika
 def callback(ch, method, properties, body):
     print("%r:%r" % (method.routing_key, body.decode("utf-8")))
     dataForTori = body.decode("utf-8")
+    print(dataForTori)
     
     
 #rmqip = sys.argv[2]
