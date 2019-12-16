@@ -32,6 +32,9 @@ var gbWidth = 30;
 var boost = 1;
 //var p2 = loadImage("./static/img/character2.png").get(400-32,234-64,32,64);
 
+var url = 'http://172.29.103.146:8000/';
+
+
 var barMap=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1],
             [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
             [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
@@ -774,10 +777,34 @@ void draw(){
                         counter=0;
                         gameState=2;
                         pokemon.push(enemy);
+                        var eid = enemy.myId;
+                        var escore = enemy.calcScore();
+                        $.ajax({
+                            type: 'POST',
+                            url: url + 'pokemon',
+                            data: JSON.stringify({ id: eid, score: escore}),
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
                         if(pokemon.length > 5 ){
                             gameState = 4;
+                            $.ajax({
+                                type: 'POST',
+                                url: url + 'team',
+                                data: JSON.stringify({
+                                                        total: pokemon[0].calcScore()+pokemon[1].calcScore()+pokemon[2].calcScore()+pokemon[3].calcScore()+pokemon[4].calcScore()+pokemon[5].calcScore(),
+                                                        pokemon1: { name: pokemon[0].myName, id: pokemon[0].myId, score: pokemon[0].calcScore()},
+                                                        pokemon2: { name: pokemon[1].myName, id: pokemon[1].myId, score: pokemon[1].calcScore()},
+                                                        pokemon3: { name: pokemon[2].myName, id: pokemon[2].myId, score: pokemon[2].calcScore()},
+                                                        pokemon4: { name: pokemon[3].myName, id: pokemon[3].myId, score: pokemon[3].calcScore()},
+                                                        pokemon5: { name: pokemon[4].myName, id: pokemon[4].myId, score: pokemon[4].calcScore()},
+                                                        pokemon6: { name: pokemon[5].myName, id: pokemon[5].myId, score: pokemon[5].calcScore()},
+                                                    }),
+                                contentType: "application/json",
+                                dataType: 'json'
+                            });
                         }
-                        // Random chance???
+                        
                     }
                 }
                 else if(fightMenu === 1){
@@ -795,6 +822,7 @@ void draw(){
         counter+=2;      // Increment frame counter
         break;
     case 4:
+        
         pushMatrix();
         background(217, 214, 210);
 
