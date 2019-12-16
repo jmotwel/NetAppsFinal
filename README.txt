@@ -38,14 +38,10 @@ All other files are image resources to be used in the game
 For our final project, our team used multiple files as well as several images.
 These files and images must be included in order for the game to run.
 
-The necessary files are also included here: https://github.com/jmotwel/VGDFinal
+The necessary files are also included here: https://github.com/jmotwel/NetAppsFinal
 
-You need to host a file server in the directory in order to play the game.
-If you have python it is simple. Python comes integrated with a file server.
-The command is:
-python -m http.server
-After running the command go to the address specified in the console.
-By default it is http://localhost:8000
+The game is hosted with server.py file through flask. The ip address is hard coded inside the javascript client file because 
+zeroconf was giving us trouble. The leaderboard and pokemon display scripts are inside ./static/img/pokemon. 
 
 
 All of the code for our game is included in the .pde files.
