@@ -15,8 +15,14 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('pumpkin-pi',
                                                                credentials));
 channel = connection.channel()
 
-channel.basic_consume(queue = 'Score',
-                      on_message_callback = callback,
-                      auto_ack = True)
+channel.exchange_declare(exchange='Pokemon',
+                         exchange_type='direct',
+                         durable=False)
 
-channel.start_consuming()  
+
+while (1):
+    
+    curVal = channel.basic_get(queue='Score', auto_ack=True)
+    if curVal != (None, None, None):
+        dataForTori = curVal[2]
+        print(dataForTori.decode("utf-8"))

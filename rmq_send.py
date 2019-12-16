@@ -12,6 +12,10 @@ channel = connection.channel()
 # Put these into if statements
 # will send a message to the relevant queue (ID for pics, Score for high scores)
 
+channel.exchange_declare(exchange='Pokemon',
+                         exchange_type='direct',
+                         durable=False)
+
 channel.basic_publish(exchange='Pokemon',
                       routing_key='ID',
                       body='10')
