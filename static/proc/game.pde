@@ -330,7 +330,7 @@ void setup(){
     size(400, 400,P2D);
     pg = createGraphics(mapWidth, mapHeight,P2D);
     m.initMap(pg,tMap,ground,ground2,ground3,mapWidth,mapHeight);
-    p=new player(3*tileSize,3*tileSize);
+    p=new player(25*tileSize,3*tileSize);
     for( var i = 1; i<=31; i++){
         pokeArr.push(loadImage("./static/img/pokemon/"+i+".png"))
     }

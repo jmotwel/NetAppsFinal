@@ -2,7 +2,7 @@ import pika
 
 # Rabbitmq setup
 credentials = pika.PlainCredentials('repo-pi','netapps')
-connection = pika.BlockingConnection(pika.ConnectionParameters('pumpkin-pi',
+connection = pika.BlockingConnection(pika.ConnectionParameters('jamies-raspberrypi',
                                                                5672,
                                                                '/',
                                                                credentials));
